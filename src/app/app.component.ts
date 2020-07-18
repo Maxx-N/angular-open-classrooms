@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isAuthenticated: boolean = false;
 
+  device1: string = 'Machine à laver';
+  device2:string='Frigo';
+  device3:string='Mac';
+
   constructor() {
     setTimeout(() => {
       this.isAuthenticated = true;

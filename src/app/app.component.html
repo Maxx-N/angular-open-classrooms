@@ -3,9 +3,9 @@
     <div class="col-xs-12">
       <h2>Mes appareils</h2>
       <ul class="list-group">
-        <app-device></app-device>
-        <app-device></app-device>
-        <app-device></app-device>
+        <app-device [deviceName]="device1" [deviceStatus]="'Eteint'"></app-device>
+        <app-device [deviceName]="device2" [deviceStatus]="'Allumé'"></app-device>
+        <app-device [deviceName]="device3" [deviceStatus]="'Eteint'"></app-device>
         <button class="btn btn-success" 
         [disabled]="!isAuthenticated"
         (click)="turnOnEverything()">Tout allumer</button>
