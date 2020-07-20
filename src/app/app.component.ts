@@ -7,10 +7,27 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isAuthenticated: boolean = false;
+  lastUpdate = new Promise((resolve, reject) => {
+    const date = new Date();
+    setTimeout(() => {
+      resolve(date);
+    }, 2000);
+  });
 
-  device1: string = 'Machine à laver';
-  device2:string='Frigo';
-  device3:string='Mac';
+  devicesArray: object[] = [
+    {
+      name: 'Machine à laver',
+      status: 'Eteint',
+    },
+    {
+      name: 'Frigo',
+      status: 'Eteint',
+    },
+    {
+      name: 'Ordinateur',
+      status: 'Allumé',
+    },
+  ];
 
   constructor() {
     setTimeout(() => {
@@ -18,7 +35,7 @@ export class AppComponent {
     }, 4000);
   }
 
-  turnOnEverything(): void {
+  onTurnOnEverything(): void {
     console.log('On allume tout !');
   }
 }
