@@ -12,6 +12,8 @@ import { DevicesViewComponent } from './devices-view/devices-view.component';
 
 import { DeviceService } from './services/device.service';
 import { AuthenticationService } from './services/authentication.service';
+import { DetailDeviceComponent } from './detail-device/detail-device.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { AuthenticationService } from './services/authentication.service';
     DeviceComponent,
     AuthenticationComponent,
     DevicesViewComponent,
+    DetailDeviceComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [DeviceService, AuthenticationService],

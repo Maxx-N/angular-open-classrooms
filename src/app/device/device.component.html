@@ -1,7 +1,7 @@
 <li [ngClass]="{'list-group-item':true,
     'list-group-item-success': deviceStatus==='Allumé',
     'list-group-item-danger': deviceStatus==='Eteint'}">
-  <div [ngStyle]="{color: getColor()}" class="h4">Appareil : {{ deviceName }}</div>
+  <div [ngStyle]="{color: getColor()}" class="h4">Appareil : <a [routerLink]="[id]">{{ deviceName }}</a></div>
   <div>Statut : {{ getStatus() }}</div>
   <input type="text" class="form-control" [(ngModel)]="deviceName" />
   <button [ngClass]="{'btn':true,

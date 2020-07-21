@@ -9,6 +9,7 @@ import { DeviceService } from '../services/device.service';
 export class DeviceComponent implements OnInit {
   @Input() deviceName: string;
   @Input() deviceStatus: string;
+  @Input() index: number;
   @Input() id: number;
 
   constructor(private deviceService: DeviceService) {}
@@ -29,9 +30,9 @@ export class DeviceComponent implements OnInit {
 
   onClickSwitch() {
     if (this.deviceStatus === 'Allumé') {
-      this.deviceService.switchOffOne(this.id);
+      this.deviceService.switchOffOne(this.index);
     } else {
-      this.deviceService.switchOnOne(this.id);
+      this.deviceService.switchOnOne(this.index);
     }
   }
 }

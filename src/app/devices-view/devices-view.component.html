@@ -11,7 +11,8 @@
             *ngFor="let device of devicesArray; let i = index"
             [deviceName]="device.name"
             [deviceStatus]="device.status"
-            [id]="i"
+            [index]="i"
+            [id]="device.id"
           ></app-device>
           <div class="d-flex justify-content-around">
             <button

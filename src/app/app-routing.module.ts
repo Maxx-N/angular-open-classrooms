@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DevicesViewComponent } from './devices-view/devices-view.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { DetailDeviceComponent } from './detail-device/detail-device.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'devices', pathMatch: 'full' },
+  { path: '', redirectTo: 'authentication', pathMatch: 'full' },
+  { path: 'authentication', component: AuthenticationComponent },
   { path: 'devices', component: DevicesViewComponent },
-  { path: 'authentication', component: AuthenticationComponent }
+  { path: 'devices/:id', component: DetailDeviceComponent },
 ];
 
 @NgModule({
