@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
 import { DeviceComponent } from './device/device.component';
 import { DeviceService } from './services/device.service';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { DevicesViewComponent } from './devices-view/devices-view.component';
 
 @NgModule({
-  declarations: [AppComponent, FirstComponent, DeviceComponent],
+  declarations: [AppComponent, FirstComponent, DeviceComponent, AuthenticationComponent, DevicesViewComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [DeviceService],
   bootstrap: [AppComponent],
