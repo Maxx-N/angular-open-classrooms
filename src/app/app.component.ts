@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DeviceService } from './services/device.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuthenticated: boolean = false;
+
+  devicesArray: any[];
+
   lastUpdate = new Promise((resolve, reject) => {
     const date = new Date();
     setTimeout(() => {
@@ -14,28 +18,23 @@ export class AppComponent {
     }, 2000);
   });
 
-  devicesArray: object[] = [
-    {
-      name: 'Machine à laver',
-      status: 'Eteint',
-    },
-    {
-      name: 'Frigo',
-      status: 'Eteint',
-    },
-    {
-      name: 'Ordinateur',
-      status: 'Allumé',
-    },
-  ];
-
-  constructor() {
+  constructor(private deviceService: DeviceService) {
     setTimeout(() => {
       this.isAuthenticated = true;
-    }, 4000);
+    }, 2000);
   }
 
-  onTurnOnEverything(): void {
-    console.log('On allume tout !');
+  ngOnInit() {
+    this.devicesArray = this.deviceService.devicesArray;
+  }
+
+  onClickTurnOnEverything(): void {
+    this.deviceService.switchOnAll();
+  }
+
+  onClickTurnOffEverything(): void {
+    if (confirm('Êtes-vous certain de vouloir éteindre tous vos appareils?')) {
+      this.deviceService.switchOffAll();
+    } 
   }
 }
