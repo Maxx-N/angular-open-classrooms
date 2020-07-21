@@ -32,4 +32,12 @@ export class DeviceService {
       device.status = "Eteint";
     }
   }
+
+  switchOnOne(i:number) {
+    this.devicesArray[i].status = "Allumé";
+  }
+
+  switchOffOne(i:number) {
+    this.devicesArray[i].status = "Eteint";
+  }
 }

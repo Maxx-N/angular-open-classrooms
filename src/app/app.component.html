@@ -8,9 +8,10 @@
       </p>
       <ul class="list-group">
         <app-device
-          *ngFor="let device of devicesArray"
+          *ngFor="let device of devicesArray; let i = index"
           [deviceName]="device.name"
           [deviceStatus]="device.status"
+          [id]="i"
         ></app-device>
         <div class="d-flex justify-content-around">
           <button

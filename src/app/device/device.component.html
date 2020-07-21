@@ -5,4 +5,8 @@
   <div [ngStyle]="{color: getColor()}" class="h4">Appareil : {{ deviceName }}</div>
   <div>Statut : {{ getStatus() }}</div>
   <input type="text" class="form-control" [(ngModel)]="deviceName" />
+  <button [ngClass]="{'btn':true,
+  'btn-sm': true,
+  'btn-success': deviceStatus!=='Allumé',
+  'btn-danger': deviceStatus==='Allumé'}" (click)="onClickSwitch()">Allumer/Eteindre</button>
 </li>
