@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService } from '../services/device.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-devices-view',
@@ -7,8 +8,8 @@ import { DeviceService } from '../services/device.service';
   styleUrls: ['./devices-view.component.scss'],
 })
 export class DevicesViewComponent implements OnInit {
-  
   devicesArray: any[];
+  userIsAuthenticated: boolean = false;
 
   lastUpdate = new Promise((resolve, reject) => {
     const date = new Date();
@@ -17,12 +18,14 @@ export class DevicesViewComponent implements OnInit {
     }, 2000);
   });
 
-  isAuthenticated: boolean = false;
+  constructor(
+    private deviceService: DeviceService,
+    private authenticationService: AuthenticationService
+  ) {}
 
-  constructor(private deviceService: DeviceService) {}
-
-  ngOnInit():void {
+  ngOnInit(): void {
     this.devicesArray = this.deviceService.devicesArray;
+    this.userIsAuthenticated = this.authenticationService.isAuthenticated;
   }
 
   onClickTurnOnEverything(): void {
@@ -32,8 +35,6 @@ export class DevicesViewComponent implements OnInit {
   onClickTurnOffEverything(): void {
     if (confirm('Êtes-vous certain de vouloir éteindre tous vos appareils?')) {
       this.deviceService.switchOffAll();
-    } 
+    }
   }
-
-
 }

@@ -1,1 +1,6 @@
-<p>authentication works!</p>
+<button *ngIf="!status" (click)="onClickSignIn()" class="btn btn-success">
+  Se connecter
+</button>
+<button *ngIf="status" (click)="onClickSignOut()" class="btn btn-danger">
+  Se déconnecter
+</button>

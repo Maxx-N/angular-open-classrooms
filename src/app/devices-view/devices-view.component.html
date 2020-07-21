@@ -16,14 +16,14 @@
           <div class="d-flex justify-content-around">
             <button
               class="btn btn-success"
-              [disabled]="!isAuthenticated"
+              [disabled]="!userIsAuthenticated"
               (click)="onClickTurnOnEverything()"
             >
               Tout allumer
             </button>
             <button
               class="btn btn-danger"
-              [disabled]="!isAuthenticated"
+              [disabled]="!userIsAuthenticated"
               (click)="onClickTurnOffEverything()"
             >
               Tout éteindre
