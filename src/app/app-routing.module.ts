@@ -4,7 +4,7 @@ import { DevicesViewComponent } from './devices-view/devices-view.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 
 const routes: Routes = [
-  { path: '', component: DevicesViewComponent },
+  { path: '', redirectTo: 'devices', pathMatch: 'full' },
   { path: 'devices', component: DevicesViewComponent },
   { path: 'authentication', component: AuthenticationComponent }
 ];

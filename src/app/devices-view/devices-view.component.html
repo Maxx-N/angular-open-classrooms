@@ -4,7 +4,7 @@
         <h2 class="text-center">Mes appareils</h2>
         <p>
           Mis à jour :
-          {{ lastUpdate | async | date: "EEEE d MMMM y" | uppercase }}
+          {{ lastUpdate | async | date: "short" | uppercase }}
         </p>
         <ul class="list-group">
           <app-device
