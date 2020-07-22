@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService } from '../services/device.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-devices-view',
@@ -9,6 +10,7 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class DevicesViewComponent implements OnInit {
   devicesArray: any[];
+  devicesSubscription: Subscription;
   userIsAuthenticated: boolean = false;
 
   lastUpdate = new Promise((resolve, reject) => {
@@ -24,7 +26,13 @@ export class DevicesViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.devicesArray = this.deviceService.devicesArray;
+    this.devicesSubscription = this.deviceService.devicesSubject.subscribe(
+      (devices: any[]) => {
+        this.devicesArray = devices;
+      }
+    );
+    this.deviceService.emitDevicesSubject();
+
     this.userIsAuthenticated = this.authenticationService.isAuthenticated;
   }
 
