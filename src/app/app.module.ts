@@ -9,11 +9,12 @@ import { FirstComponent } from './first/first.component';
 import { DeviceComponent } from './device/device.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { DevicesViewComponent } from './devices-view/devices-view.component';
+import { DetailDeviceComponent } from './detail-device/detail-device.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 import { DeviceService } from './services/device.service';
 import { AuthenticationService } from './services/authentication.service';
-import { DetailDeviceComponent } from './detail-device/detail-device.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthenticationGuardService } from './services/authentication-guard.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [DeviceService, AuthenticationService],
+  providers: [DeviceService, AuthenticationService, AuthenticationGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
