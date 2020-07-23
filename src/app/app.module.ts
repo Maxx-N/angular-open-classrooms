@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,11 +11,14 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { DevicesViewComponent } from './devices-view/devices-view.component';
 import { DetailDeviceComponent } from './detail-device/detail-device.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CreateDeviceComponent } from './create-device/create-device.component';
 
 import { DeviceService } from './services/device.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationGuardService } from './services/authentication-guard.service';
-import { CreateDeviceComponent } from './create-device/create-device.component';
+import { UserService } from './services/user.service';
+import { UserListComponent } from './user-list/user-list.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +30,16 @@ import { CreateDeviceComponent } from './create-device/create-device.component';
     DetailDeviceComponent,
     NotFoundComponent,
     CreateDeviceComponent,
+    UserListComponent,
+    CreateUserComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [DeviceService, AuthenticationService, AuthenticationGuardService],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  providers: [
+    DeviceService,
+    AuthenticationService,
+    AuthenticationGuardService,
+    UserService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -6,6 +6,7 @@ import { DetailDeviceComponent } from './detail-device/detail-device.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthenticationGuardService } from './services/authentication-guard.service';
 import { CreateDeviceComponent } from './create-device/create-device.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'devices/:id',
     canActivate: [AuthenticationGuardService],
     component: DetailDeviceComponent,
+  },
+  {
+    path: 'users',
+    component: UserListComponent,
   },
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundComponent },
