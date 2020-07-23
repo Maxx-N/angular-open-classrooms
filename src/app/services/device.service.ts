@@ -60,4 +60,18 @@ export class DeviceService {
       return d.id === id;
     });
   }
+
+  addDevice(deviceName: string, deviceStatus: string) {
+    const device = {
+      id: 0,
+      name: deviceName,
+      status: deviceStatus,
+    };
+
+    device.id = this.devicesArray[this.devicesArray.length - 1].id + 1;
+
+    this.devicesArray.push(device);
+
+    this.emitDevicesSubject();
+  }
 }

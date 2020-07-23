@@ -5,17 +5,23 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { DetailDeviceComponent } from './detail-device/detail-device.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthenticationGuardService } from './services/authentication-guard.service';
+import { CreateDeviceComponent } from './create-device/create-device.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'authentication', pathMatch: 'full' },
   {
     path: 'authentication',
     component: AuthenticationComponent,
   },
+  { path: '', redirectTo: 'devices', pathMatch: 'full' },
   {
     path: 'devices',
     canActivate: [AuthenticationGuardService],
     component: DevicesViewComponent,
+  },
+  {
+    path: 'devices/new',
+    canActivate: [AuthenticationGuardService],
+    component: CreateDeviceComponent,
   },
   {
     path: 'devices/:id',
