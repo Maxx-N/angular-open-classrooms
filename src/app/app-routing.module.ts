@@ -7,6 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthenticationGuardService } from './services/authentication-guard.service';
 import { CreateDeviceComponent } from './create-device/create-device.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,14 @@ const routes: Routes = [
   {
     path: 'users',
     component: UserListComponent,
+    children: [
+      {
+        path: 'new',
+        component: CreateUserComponent,
+      },
+    ],
   },
+
   { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundComponent },
 ];

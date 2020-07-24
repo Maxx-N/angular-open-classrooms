@@ -1,1 +1,62 @@
-<p>create-user works!</p>
+<div class="col-sm-8 col-sm-offset-2">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+      <label for="first-name">Prénom</label>
+      <input
+        type="text"
+        id="first-name"
+        class="form-control"
+        formControlName="firstName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="last-name">Nom</label>
+      <input
+        type="text"
+        id="last-name"
+        class="form-control"
+        formControlName="lastName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        id="email"
+        class="form-control"
+        formControlName="email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="drink-preference">Boisson préférée</label>
+      <select
+        type="text"
+        id="drink-preference"
+        class="form-control"
+        formControlName="drinkPreference"
+      >
+        <option value="Vodka">Vodka</option>
+        <option value="Whisky">Whisky</option>
+        <option value="Rhum">Rhum</option>
+        <option value="Tequilla">Tequilla</option>
+        <option value="Gin">Gin</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="hobbies">Hobbies</label>
+      <div id="hobbies" formArrayName="hobbies">
+        <div
+          *ngFor="let hobby of getHobbiesAsFormArray().controls; let i = index"
+        >
+          <input type="text" class="form-control" [formControlName]="i" />
+        </div>
+        <button type="button" class="btn btn-info" (click)="onAddHobby()">
+          Ajouter un hobby
+        </button>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">
+      Ajouter le contact
+    </button>
+  </form>
+</div>
