@@ -1,38 +1,44 @@
 <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2 class="text-center">Mes appareils</h2>
-        <p>
-          Mis à jour :
-          {{ lastUpdate | async | date: "short" | uppercase }}
-        </p>
-        <ul class="list-group">
-          <app-device
-            *ngFor="let device of devicesArray; let i = index"
-            [deviceName]="device.name"
-            [deviceStatus]="device.status"
-            [index]="i"
-            [id]="device.id"
-          ></app-device>
-          <div class="d-flex justify-content-around">
-            <button
-              class="btn btn-success"
-              [disabled]="!userIsAuthenticated"
-              (click)="onClickTurnOnEverything()"
-            >
-              Tout allumer
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="text-center">Mes appareils</h2>
+      <p>
+        Mis à jour :
+        {{ lastUpdate | async | date: "short" | uppercase }}
+      </p>
+      <ul class="list-group">
+        <app-device
+          *ngFor="let device of devicesArray; let i = index"
+          [deviceName]="device.name"
+          [deviceStatus]="device.status"
+          [index]="i"
+          [id]="device.id"
+        ></app-device>
+        <div class="d-flex justify-content-around">
+          <button
+            class="btn btn-success"
+            [disabled]="!userIsAuthenticated"
+            (click)="onClickTurnOnEverything()"
+          >
+            Tout allumer
+          </button>
+          <button
+            class="btn btn-danger"
+            [disabled]="!userIsAuthenticated"
+            (click)="onClickTurnOffEverything()"
+          >
+            Tout éteindre
+          </button>
+          <div class="d-flex">
+            <button class="btn btn-primary" (click)="onClickSave()">
+              Sauvegarder les appareils
             </button>
-            <button
-              class="btn btn-danger"
-              [disabled]="!userIsAuthenticated"
-              (click)="onClickTurnOffEverything()"
-            >
-              Tout éteindre
+            <button class="btn btn-warning" (click)="onClickFetch()">
+              Récupérer la dernière sauvegarde
             </button>
-            <button class="btn btn-primary" (click)="onClickSave()">Sauvegarder les appareils</button>
           </div>
-        </ul>
-      </div>
+        </div>
+      </ul>
     </div>
   </div>
-  
+</div>

@@ -49,4 +49,8 @@ export class DevicesViewComponent implements OnInit {
   onClickSave() {
     this.deviceService.saveDevicesOnServer();
   }
+
+  onClickFetch() {
+    this.deviceService.getDevicesFromServer();
+  }
 }

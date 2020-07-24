@@ -8,23 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class DeviceService {
   devicesSubject: Subject<any[]> = new Subject<any[]>();
 
-  private devicesArray: any[] = [
-    {
-      id: 1,
-      name: 'Machine à laver',
-      status: 'Eteint',
-    },
-    {
-      id: 2,
-      name: 'Frigo',
-      status: 'Allumé',
-    },
-    {
-      id: 3,
-      name: 'Ordinateur',
-      status: 'Eteint',
-    },
-  ];
+  private devicesArray: any[];
 
   constructor(private httpClient: HttpClient) {}
 
@@ -85,6 +69,20 @@ export class DeviceService {
       .subscribe(
         () => {
           console.log('Enregistrement terminé');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
+
+  getDevicesFromServer(): void {
+    this.httpClient
+      .get<any[]>('https://first-angular-database.firebaseio.com/devices.json')
+      .subscribe(
+        (response) => {
+          this.devicesArray = response;
+          this.emitDevicesSubject();
         },
         (error) => {
           console.log('Erreur ! : ' + error);
