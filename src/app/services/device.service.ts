@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,7 @@ export class DeviceService {
     },
   ];
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   emitDevicesSubject() {
     this.devicesSubject.next(this.devicesArray.slice());
@@ -73,5 +74,21 @@ export class DeviceService {
     this.devicesArray.push(device);
 
     this.emitDevicesSubject();
+  }
+
+  saveDevicesOnServer(): void {
+    this.httpClient
+      .put(
+        'https://first-angular-database.firebaseio.com/devices.json',
+        this.devicesArray
+      )
+      .subscribe(
+        () => {
+          console.log('Enregistrement terminé');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
   }
 }
